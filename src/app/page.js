@@ -308,7 +308,7 @@ export default function Home() {
               <Image 
                 alt="Md Shajjadul ferdous Profile Image" 
                 className="rounded-2xl border-2 border-deep-ink grayscale shadow-inner w-full h-auto object-cover max-h-[380px]" 
-                src="https://res.cloudinary.com/dddpxoz5j/image/upload/SHAJJADUL_FERDOUS_gsqsja."
+                src="https://res.cloudinary.com/dddpxoz5j/image/upload/v1778191772/SHAJJADUL_FERDOUS_gsqsja.jpg"
                 width={450}
                 height={380}
                 priority
