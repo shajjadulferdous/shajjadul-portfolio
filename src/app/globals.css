@@ -1,26 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Bipul Playful Bento Color Palette */
+  --color-outline-variant: #cec6ad;
+  --color-error: #ba1a1a;
+  --color-background: #ecfdf8;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed-dim: #e2c62d;
+  --color-on-secondary-container: #3a6d62;
+  --color-primary-fixed: #ffe24c;
+  --color-ink-soft: #506B67;
+  --color-surface-dim: #cdded9;
+  --color-on-tertiary-container: #815b43;
+  --color-secondary-fixed: #b7eedf;
+  --color-on-primary-fixed: #211b00;
+  --color-tertiary: #7c563e;
+  --color-surface-container: #e1f2ed;
+  --color-tertiary-fixed-dim: #eebc9f;
+  --color-primary: #6d5e00;
+  --color-secondary-container: #b7eedf;
+  --color-on-tertiary-fixed: #2f1503;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-error: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-on-secondary-fixed: #00201b;
+  --color-secondary: #34675c;
+  --color-tertiary-container: #ffd9c4;
+  --color-on-surface-variant: #4b4734;
+  --color-surface-container-high: #dbece7;
+  --color-error-container: #ffdad6;
+  --color-surface-container-highest: #d5e6e2;
+  --color-surface-tint: #6d5e00;
+  --color-paper-shadow: #DCEEEC;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-fixed-variant: #194f45;
+  --color-secondary-fixed-dim: #9cd1c4;
+  --color-minimal-paper: #F5EFE7;
+  --color-surface-bright: #ecfdf8;
+  --color-outline: #7d7761;
+  --color-surface: #ecfdf8;
+  --color-on-secondary: #ffffff;
+  --color-tertiary-fixed: #ffdbc8;
+  --color-surface-variant: #d5e6e2;
+  --color-primary-container: #fde047;
+  --color-pencil-pink: #F4C5CF;
+  --color-on-surface: #0f1e1c;
+  --color-paper-base: #F4FAF9;
+  --color-on-tertiary-fixed-variant: #613f29;
+  --color-on-primary-container: #726300;
+  --color-inverse-primary: #e2c62d;
+  --color-surface-container-low: #e6f7f3;
+  --color-on-background: #0f1e1c;
+  --color-on-primary-fixed-variant: #524600;
+  --color-inverse-surface: #243330;
+  --color-inverse-on-surface: #e3f4f0;
+  --color-sky-haze: #A9D4EC;
+  --color-notebook-yellow: #ffe24c;
+  --color-deep-ink: #0f1e1c;
+
+  /* Custom Spacings for Bipul Portfolio Layout */
+  --spacing-margin-mobile: 20px;
+  --spacing-unit: 4px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1180px;
+  --spacing-margin-desktop: 32px;
+
+  /* Custom Font Families mapped from Google Fonts in layout */
+  --font-display-hero: var(--font-caveat), cursive;
+  --font-headline-lg: var(--font-plus-jakarta-sans), sans-serif;
+  --font-body-md: var(--font-nunito-sans), sans-serif;
+  --font-label-caps: var(--font-plus-jakarta-sans), sans-serif;
+  --font-hand-label: var(--font-patrick-hand), cursive;
+  --font-display-hero-mobile: var(--font-caveat), cursive;
+  --font-body-lg: var(--font-nunito-sans), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom Playful Bento & Neo-Brutalist Styles */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.wavy-underline {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 12.5 0 25 10 T 50 10 T 75 10 T 100 10' fill='none' stroke='%23F4C5CF' stroke-width='4'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  padding-bottom: 8px;
+}
+
+.bento-card {
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bento-card:hover {
+  transform: translate(-4px, -4px) rotate(0deg) !important;
+}
+
+.scribble-border {
+  border: 2px dashed #0f1e1c;
+}
+
+/* Custom Selection style */
+::selection {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: max(884px, 100dvh);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-nunito-sans), sans-serif;
+  overflow-x: hidden;
 }
