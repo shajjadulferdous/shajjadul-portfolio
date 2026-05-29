@@ -4,7 +4,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Lenis from "lenis";
-
+import { 
+  FiBookOpen, 
+  FiLayers, 
+  FiShoppingBag, 
+  FiMonitor, 
+  FiCpu, 
+  FiBarChart2 
+} from "react-icons/fi";
 // Dynamic portfolio data for easy configuration
 const ABOUT_HIGHLIGHTS = [
   { text: "Fer_dous", sub: "Codeforces Handle", span: true, bg: "bg-white", rotate: "rotate-0" },
@@ -36,22 +43,32 @@ const TOOLKIT = [
 const PROJECTS = [
   {
     id: 1,
-    title: "EduApa - Online Learning Platform",
-    description: "A comprehensive system containing social authentication, search querying workflows, protected client routes, persistent sessions, and reactive user settings parameters.",
-    tags: ["Next.js", "BetterAuth", "MongoDB", "Tailwind CSS"],
-    icon: "school",
+    title: "Tutoria - Tutor Booking Platform",
+    description: "A modern, full-stack marketplace enabling students to discover tutors, schedule sessions, and register as instructors. Features a dynamic profile-matching engine and multi-role user workflows.",
+    tags: ["Next.js", "BetterAuth", "MongoDB", "HeroUI", "Tailwind CSS"],
+    icon: FiBookOpen,
     iconColor: "text-deep-ink",
-    link: "https://edu-apa-a-learning-platform-sthv.vercel.app",
-    github: "https://github.com/shajjadulferdous/EduApa-A-Learning-Platform",
-    large: true,
+    link: "https://tutoria-one.vercel.app/",
+    github: "https://github.com/shajjadulferdous/tutoria",
     bgClass: "bg-secondary-container"
   },
   {
     id: 2,
+    title: "EduApa - Online Learning Platform",
+    description: "A comprehensive LMS built with persistent user sessions, social authentication adapters, robust client-side route guards, and high-performance reactive settings dashboards.",
+    tags: ["Next.js", "BetterAuth", "MongoDB", "Tailwind CSS"],
+    icon: FiLayers,
+    iconColor: "text-deep-ink",
+    link: "https://edu-apa-a-learning-platform-sthv.vercel.app",
+    github: "https://github.com/shajjadulferdous/EduApa-A-Learning-Platform",
+    bgClass: "bg-secondary-container"
+  },
+  {
+    id: 3,
     title: "Digital Tools Store",
-    description: "An interactive React sandbox mapping product states. Users can dynamically browse, evaluate, clear, or remove custom items dynamically syncing responsive notification alerts.",
+    description: "An interactive e-commerce sandbox mapping complex global state behaviors. Implements real-time item evaluation, batch state clearing, and state-synced toast notification systems.",
     tags: ["React.js", "Tailwind CSS", "Toastify"],
-    icon: "shopping_cart",
+    icon: FiShoppingBag,
     iconColor: "text-error",
     link: "https://phenomenal-longma-c93aec.netlify.app/",
     github: "https://github.com/shajjadulferdous/React-Basic",
@@ -60,11 +77,11 @@ const PROJECTS = [
     headerBg: "bg-white"
   },
   {
-    id: 3,
+    id: 4,
     title: "Responsive Core Layout",
-    description: "A comprehensive structural layout project validating robust standard alignment rules. Employs crisp mobile-first adaptive frameworks utilizing layered CSS Flexbox configurations.",
-    tags: ["HTML5", "CSS Flexbox/Grid"],
-    icon: "devices",
+    description: "A performance-focused UI structural layout validating strict modern design tokens. Leverages rigid mobile-first break-points utilizing layered CSS Flexbox and CSS Grid setups.",
+    tags: ["HTML5", "CSS Grid", "Flexbox"],
+    icon: FiMonitor,
     iconColor: "text-white",
     link: "https://shajjadulferdous.github.io/html-last/",
     github: "https://github.com/shajjadulferdous/html-last",
@@ -72,12 +89,12 @@ const PROJECTS = [
     headerBg: "bg-sky-haze"
   },
   {
-    id: 4,
+    id: 5,
     title: "Dynamic API Hub",
-    description: "Asynchronously fetches real-time parameters from a third-party pipeline, cleanly manipulating structures into customized components. Includes credentialed access checking.",
+    description: "Asynchronously orchestrates data fetching pipelines from third-party RESTful architectures. Maps structured JSON payloads directly into clean UI elements with integrated admin role gates.",
     accessInfo: "Access: admin | admin123",
-    tags: ["JavaScript ES6", "DaisyUI"],
-    icon: "api",
+    tags: ["JavaScript ES6", "DaisyUI", "REST API"],
+    icon: FiCpu,
     iconColor: "text-deep-ink",
     link: "https://jocular-florentine-a591aa.netlify.app/",
     github: "https://github.com/shajjadulferdous/DOM-and-API-and-HTML-and-CSS",
@@ -86,11 +103,11 @@ const PROJECTS = [
     headerBg: "bg-notebook-yellow"
   },
   {
-    id: 5,
+    id: 6,
     title: "React Analytical Playground",
-    description: "A technical core application validating unified frontend flows. Features client-side routing, modular global states via Context API, and analytical SVG charts powered by Recharts.",
+    description: "A micro-frontend platform optimizing client-side routing structures. Leverages React Context API for global state persistence paired with highly performant, responsive SVG charts via Recharts.",
     tags: ["React Router", "Recharts", "Context API"],
-    icon: "insights",
+    icon: FiBarChart2,
     iconColor: "text-white",
     link: "https://funny-kitsune-2345d4.netlify.app/",
     github: "https://github.com/shajjadulferdous/React-Practice-By-making-a-Simple-Website",
@@ -99,7 +116,6 @@ const PROJECTS = [
   }
 ];
 
-// Motion configurations
 const fadeInUp = {
   hidden: { opacity: 0, y: 35 },
   visible: { 
@@ -448,75 +464,94 @@ export default function Home() {
         </section>
 
         {/* Selected Work */}
-        <section className="px-margin-mobile max-w-container-max mx-auto py-12 scroll-mt-24" id="work">
-          <div className="space-y-4 mb-12">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-[2px] bg-deep-ink"></div>
-              <span className="font-hand-label text-xl text-ink-soft">03 – selected work</span>
+       <section className="px-margin-mobile max-w-container-max mx-auto py-12 scroll-mt-24" id="work">
+            {/* Header Container */}
+            <div className="space-y-4 mb-12">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-[2px] bg-deep-ink"></div>
+                <span className="font-hand-label text-xl text-ink-soft">03 – selected work</span>
+              </div>
+              <h2 className="font-display-hero-mobile text-5xl md:text-6xl text-deep-ink font-bold wavy-underline inline-block pb-1">
+                Things I&apos;ve built
+              </h2>
+              <p className="font-body-md text-ink-soft max-w-2xl text-lg">
+                A collection of projects demonstrating clean client-side logic, operational APIs, and secure application setups.
+              </p>
             </div>
-            <h2 className="font-display-hero-mobile text-5xl md:text-6xl text-deep-ink font-bold wavy-underline inline-block pb-1">
-              Things I&apos;ve built
-            </h2>
-            <p className="font-body-md text-ink-soft max-w-2xl text-lg">
-              A collection of projects demonstrating clean client-side logic, operational APIs, and secure application setups.
-            </p>
-          </div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {PROJECTS.map((project) => {
-              if (project.large) {
+            {/* Grid Container - Uniform column sizing across all screens */}
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {PROJECTS.map((project) => {
+                // Dynamic React Component Assignment
+                const IconComponent = project.icon;
+
                 return (
                   <motion.div
                     key={project.id}
                     variants={fadeInUp}
                     whileHover={{ y: -4, rotate: 0 }}
-                    className="md:col-span-2 bg-white border-2 border-deep-ink rounded-3xl overflow-hidden flex flex-col md:flex-row shadow-[8px_8px_0px_0px_rgba(15,30,28,1)] bento-card cursor-pointer group"
+                    className={`${project.bgClass} ${project.rotate || ""} border-2 border-deep-ink rounded-3xl overflow-hidden shadow-[6px_6px_0px_0px_rgba(15,30,28,1)] bento-card flex flex-col cursor-pointer group`}
                   >
-                    <div className={`${project.bgClass} md:w-1/2 p-12 flex items-center justify-center border-b-2 md:border-b-0 md:border-r-2 border-deep-ink relative overflow-hidden`}>
-                      <motion.div 
-                        whileHover={{ scale: 1.15, rotate: 10 }}
-                        className="material-symbols-outlined text-8xl text-deep-ink select-none"
-                        style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        {project.icon}
+                    {/* Icon / Header Section */}
+                    <div className={`h-36 ${project.headerBg || "bg-white"} border-b-2 border-deep-ink flex items-center justify-center relative overflow-hidden`}>
+                      <motion.div whileHover={{ scale: 1.15 }}>
+                        <IconComponent className={`text-5xl ${project.iconColor}`} />
                       </motion.div>
                     </div>
-                    <div className="md:w-1/2 p-8 flex flex-col justify-between gap-6">
-                      <div className="space-y-4">
-                        <h3 className="font-display-hero text-4xl text-deep-ink font-bold leading-none">{project.title}</h3>
-                        <p className="text-ink-soft text-sm leading-relaxed">{project.description}</p>
+
+                    {/* Content Section */}
+                    <div className="p-6 flex-grow flex flex-col justify-between gap-4">
+                      <div className="space-y-3">
+                        <h3 className="font-display-hero text-3xl text-deep-ink font-bold leading-none">
+                          {project.title}
+                        </h3>
+                        <p className="text-ink-soft text-xs leading-relaxed">
+                          {project.description}
+                        </p>
                       </div>
-                      <div className="space-y-4">
-                        <div className="flex flex-wrap gap-2">
+
+                      {/* Tags and Action Links Section */}
+                      <div className="space-y-3 pt-2">
+                        {project.accessInfo && (
+                          <div className="text-[11px] text-ink-soft italic font-mono">
+                            {project.accessInfo}
+                          </div>
+                        )}
+
+                        <div className="flex flex-wrap gap-1.5">
                           {project.tags.map((tag, tagIdx) => (
-                            <span key={tagIdx} className="px-2 py-0.5 border border-deep-ink rounded-full text-xs font-hand-label font-bold text-ink-soft bg-paper-base">
+                            <span 
+                              key={tagIdx} 
+                              className="px-2.5 py-0.5 bg-white/70 border border-deep-ink rounded-full text-[10px] font-hand-label font-bold text-ink-soft"
+                            >
                               {tag}
                             </span>
                           ))}
                         </div>
-                        <div className="flex gap-4 font-hand-label pt-2">
+
+                        <div className="flex gap-4 font-hand-label text-sm pt-2">
                           <a 
-                            className="text-deep-ink underline hover:text-secondary font-bold text-lg" 
+                            className="underline text-deep-ink hover:text-secondary font-bold" 
                             href={project.link} 
                             target="_blank" 
                             rel="noopener noreferrer"
                           >
-                            Live App →
+                            Live Link →
                           </a>
                           {project.github && (
                             <a 
-                              className="text-deep-ink underline hover:text-secondary font-bold text-lg" 
+                              className="underline text-deep-ink hover:text-secondary font-bold" 
                               href={project.github} 
                               target="_blank" 
                               rel="noopener noreferrer"
                             >
-                              GitHub Repo
+                              Repository
                             </a>
                           )}
                         </div>
@@ -524,70 +559,9 @@ export default function Home() {
                     </div>
                   </motion.div>
                 );
-              }
-
-              // Standard Cards
-              return (
-                <motion.div
-                  key={project.id}
-                  variants={fadeInUp}
-                  whileHover={{ y: -4, rotate: 0 }}
-                  className={`${project.bgClass} ${project.rotate || ""} border-2 border-deep-ink rounded-3xl overflow-hidden shadow-[6px_6px_0px_0px_rgba(15,30,28,1)] bento-card flex flex-col cursor-pointer group`}
-                >
-                  <div className={`h-36 ${project.headerBg || "bg-white"} border-b-2 border-deep-ink flex items-center justify-center relative overflow-hidden`}>
-                    <motion.div 
-                      whileHover={{ scale: 1.15 }}
-                      className={`material-symbols-outlined text-5xl ${project.iconColor}`}
-                      style={project.icon === "favorite" || project.icon === "star" || project.icon === "local_florist" ? { fontVariationSettings: "'FILL' 1" } : {}}
-                    >
-                      {project.icon}
-                    </motion.div>
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col justify-between gap-4">
-                    <div className="space-y-3">
-                      <h3 className="font-display-hero text-3xl text-deep-ink font-bold leading-none">{project.title}</h3>
-                      <p className="text-ink-soft text-xs leading-relaxed">{project.description}</p>
-                    </div>
-                    <div className="space-y-3 pt-2">
-                      {project.accessInfo && (
-                        <div className="text-[11px] text-ink-soft italic font-mono">
-                          {project.accessInfo}
-                        </div>
-                      )}
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.tags.map((tag, tagIdx) => (
-                          <span key={tagIdx} className="px-2.5 py-0.5 bg-white/70 border border-deep-ink rounded-full text-[10px] font-hand-label font-bold text-ink-soft">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex gap-4 font-hand-label text-sm pt-2">
-                        <a 
-                          className="underline text-deep-ink hover:text-secondary font-bold" 
-                          href={project.link} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          Live Link →
-                        </a>
-                        {project.github && (
-                          <a 
-                            className="underline text-deep-ink hover:text-secondary font-bold" 
-                            href={project.github} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                          >
-                            {project.title === "Digital Tools Store" ? "GitHub Repo" : "Repository"}
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </section>
+              })}
+            </motion.div>
+       </section>
 
         {/* Contact Section */}
         <section className="px-margin-mobile max-w-container-max mx-auto py-12 text-center scroll-mt-24" id="contact">
