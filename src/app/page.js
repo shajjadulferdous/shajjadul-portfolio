@@ -173,7 +173,15 @@ export default function Home() {
       lenis.destroy();
     };
   }, []);
-
+   const StarFlare = ({ className }) => (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={`w-6 h-6 ${className} select-none pointer-events-none`}
+    >
+      <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z" />
+    </svg>
+  );
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-primary-container min-h-screen">
       {/* Top Navigation */}
@@ -572,97 +580,127 @@ export default function Home() {
        </section>
 
         {/* Contact Section */}
-        <section className="px-margin-mobile max-w-container-max mx-auto py-12 text-center scroll-mt-24" id="contact">
-          <div className="space-y-4 mb-12">
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-8 h-[2px] bg-deep-ink"></div>
-              <span className="font-hand-label text-xl text-ink-soft">04 – say hi</span>
-              <div className="w-8 h-[2px] bg-deep-ink"></div>
-            </div>
-            <h2 className="font-display-hero-mobile text-6xl text-deep-ink font-bold wavy-underline inline-block pb-1">
-              Get in touch
-            </h2>
-            <p className="font-body-md text-ink-soft max-w-lg mx-auto text-lg leading-relaxed">
-              Feel free to connect for coding collaborations, MERN inquiries, or algorithmic problem-solving discussions.
-            </p>
-          </div>
+<section 
+      className="px-4 md:px-8 max-w-7xl mx-auto py-20 text-center scroll-mt-24 relative overflow-hidden" 
+      id="contact"
+    >
+      {/* Subtle Grid Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f1e1c05_1px,transparent_1px),linear-gradient(to_bottom,#0f1e1c05_1px,transparent_1px)] bg-[size:32px_32px] -z-10" />
+
+      {/* Header Area */}
+      <div className="space-y-4 mb-16 relative z-10">
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-8 h-[2px] bg-deep-ink/60"></div>
+          <span className="font-hand-label text-lg tracking-wider text-ink-soft uppercase font-bold">
+            04 – say hi
+          </span>
+          <div className="w-8 h-[2px] bg-deep-ink/60"></div>
+        </div>
+        
+        <h2 className="font-display-hero-mobile text-5xl md:text-6xl text-deep-ink font-black tracking-tight relative inline-block pb-2">
+          Get in touch
+          <span className="absolute bottom-0 left-0 w-full h-[3px] bg-deep-ink rounded-full"></span>
+        </h2>
+        
+        <p className="font-body-md text-ink-soft max-w-xl mx-auto text-base md:text-lg leading-relaxed">
+          Feel free to connect for coding collaborations, MERN inquiries, or algorithmic problem-solving discussions.
+        </p>
+      </div>
+
+      {/* Main Contact Card */}
+      <div className="max-w-2xl mx-auto transition-transform duration-300 hover:-translate-y-1 hover:-translate-x-1">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          /* FIXED BORDERS & SHADOWS:
+             - Reduced border to a clean, crisp 3px (border-3)
+             - Swapped harsh 16px shadow for a tight, deliberate 8px offset
+             - Adjusted border-radius to rounded-[32px] so the shadow geometry lines up elegantly
+          */
+          className="bg-white border-3 border-deep-ink rounded-[32px] p-8 md:p-14 shadow-[8px_8px_0px_0px_#0f1e1c] relative overflow-hidden"
+        >
+          {/* Animated SVG Flare Corners with adjusted placement */}
+          <motion.div 
+            animate={{ rotate: [0, -360], scale: [1, 1.1, 1] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+            className="absolute top-5 left-5 text-notebook-yellow"
+          >
+            <StarFlare className="w-6 h-6 filter drop-shadow-[1.5px_1.5px_0px_#0f1e1c]" />
+          </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="bg-white border-2 border-deep-ink rounded-[40px] p-12 shadow-[12px_12px_0px_0px_rgba(15,30,28,1)] max-w-3xl mx-auto relative overflow-hidden"
+            animate={{ rotate: [0, 360], scale: [1, 1.15, 1] }}
+            transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+            className="absolute top-5 right-5 text-secondary"
           >
-            {/* Corner Decorative Flares */}
-            <motion.div 
-              animate={{ rotate: [0, -360] }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-              className="absolute top-4 left-4 material-symbols-outlined text-notebook-yellow text-2xl select-none"
-            >
-              flare
-            </motion.div>
-            <motion.div 
-              animate={{ rotate: [0, 360] }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-              className="absolute top-4 right-4 material-symbols-outlined text-secondary text-2xl select-none"
-            >
-              flare
-            </motion.div>
-            <motion.div 
-              animate={{ rotate: [0, 360] }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-              className="absolute bottom-4 left-4 material-symbols-outlined text-pencil-pink text-2xl select-none"
-            >
-              flare
-            </motion.div>
-            <motion.div 
-              animate={{ rotate: [0, -360] }}
-              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-              className="absolute bottom-4 right-4 material-symbols-outlined text-sky-haze text-2xl select-none"
-            >
-              flare
-            </motion.div>
-
-            <div className="space-y-8 relative z-10">
-              <h3 className="font-display-hero text-5xl md:text-6xl text-deep-ink font-bold leading-none">Start a conversation</h3>
-              <p className="font-hand-label text-2xl text-ink-soft font-semibold max-w-md mx-auto">
-                I&apos;m always happy to talk about engineering, design, or a good collaboration. The inbox is open.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-4">
-                <motion.a 
-                  whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                  whileTap={{ scale: 0.98 }}
-                  href="mailto:shajjadulferdous@gmail.com"
-                  className="bg-notebook-yellow border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
-                >
-                  Email Me
-                </motion.a>
-                <motion.a 
-                  whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                  whileTap={{ scale: 0.98 }}
-                  href="https://www.linkedin.com/in/md-shajjadul-ferdous/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-sky-haze border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
-                >
-                  LinkedIn
-                </motion.a>
-                <motion.a 
-                  whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                  whileTap={{ scale: 0.98 }}
-                  href="https://github.com/shajjadulferdous"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-secondary-fixed border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
-                >
-                  GitHub
-                </motion.a>       
-              </div>
-            </div>
+            <StarFlare className="w-7 h-7 filter drop-shadow-[1.5px_1.5px_0px_#0f1e1c]" />
           </motion.div>
-        </section>
+
+          <motion.div 
+            animate={{ rotate: [0, 360], scale: [1, 0.95, 1] }}
+            transition={{ repeat: Infinity, duration: 7, ease: "linear" }}
+            className="absolute bottom-5 left-5 text-pencil-pink"
+          >
+            <StarFlare className="w-5 h-5 filter drop-shadow-[1.5px_1.5px_0px_#0f1e1c]" />
+          </motion.div>
+
+          <motion.div 
+            animate={{ rotate: [0, -360], scale: [1, 1.1, 1] }}
+            transition={{ repeat: Infinity, duration: 9, ease: "linear" }}
+            className="absolute bottom-5 right-5 text-sky-haze"
+          >
+            <StarFlare className="w-6 h-6 filter drop-shadow-[1.5px_1.5px_0px_#0f1e1c]" />
+          </motion.div>
+
+          {/* Content */}
+          <div className="space-y-6 relative z-10">
+            <h3 className="font-display-hero text-3xl md:text-5xl text-deep-ink font-black tracking-tight leading-none">
+              Start a conversation
+            </h3>
+            
+            <p className="font-hand-label text-lg md:text-xl text-ink-soft max-w-md mx-auto leading-normal">
+              I&apos;m always happy to talk about engineering, design, or a good collaboration. The inbox is open.
+            </p>
+            
+            {/* Action Buttons with matching crisp styling */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-6">
+              <motion.a 
+                whileHover={{ y: -2, x: -2, shadow: "6px 6px 0px 0px #0f1e1c" }}
+                whileTap={{ scale: 0.98 }}
+                href="mailto:shajjadulferdous@gmail.com"
+                className="w-full sm:w-auto bg-notebook-yellow border-2 border-deep-ink px-6 py-3 rounded-xl font-bold text-deep-ink text-sm tracking-wide uppercase shadow-[4px_4px_0px_0px_#0f1e1c] text-center"
+              >
+                Email Me
+              </motion.a>
+              
+              <motion.a 
+                whileHover={{ y: -2, x: -2, shadow: "6px 6px 0px 0px #0f1e1c" }}
+                whileTap={{ scale: 0.98 }}
+                href="https://www.linkedin.com/in/md-shajjadul-ferdous/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-sky-haze border-2 border-deep-ink px-6 py-3 rounded-xl font-bold text-deep-ink text-sm tracking-wide uppercase shadow-[4px_4px_0px_0px_#0f1e1c] text-center"
+              >
+                LinkedIn
+              </motion.a>
+              
+              <motion.a 
+                whileHover={{ y: -2, x: -2, shadow: "6px 6px 0px 0px #0f1e1c" }}
+                whileTap={{ scale: 0.98 }}
+                href="https://github.com/shajjadulferdous"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-secondary-fixed border-2 border-deep-ink px-6 py-3 rounded-xl font-bold text-deep-ink text-sm tracking-wide uppercase shadow-[4px_4px_0px_0px_#0f1e1c] text-center"
+              >
+                GitHub
+              </motion.a>     
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
       </main>
 
       {/* Footer */}
