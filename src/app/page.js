@@ -21,7 +21,7 @@ const TOOLKIT = [
   },
   {
     category: "Frontend Web",
-    items: ["HTML5 & CSS3", "Tailwind CSS", "DaisyUI", "React.js", "Next.js (App Router)", "React Router"]
+    items: ["HTML5 & CSS3", "Tailwind CSS", "DaisyUI","HeroUI", "React.js", "Next.js (App Router)", "React Router"]
   },
   {
     category: "Data & Security",
@@ -287,7 +287,7 @@ export default function Home() {
               <motion.a
                 whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
                 whileTap={{ scale: 0.98 }}
-                href="https://drive.google.com/file/d/1OxTzuBHBqL9yAXuxrvSBA01OuX09uuMy/view?usp=sharing"
+                href="https://drive.google.com/file/d/1r-spdW-i4aiH8q4vtQxjfeA90gnabevi/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white border-2 border-deep-ink px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] font-bold text-deep-ink hover:text-deep-ink text-sm tracking-wide uppercase transition-all"
@@ -676,37 +676,7 @@ export default function Home() {
                   className="bg-secondary-fixed border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
                 >
                   GitHub
-                </motion.a>
-                <motion.a 
-                  whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                  whileTap={{ scale: 0.98 }}
-                  href="https://codeforces.com/profile/Fer_dous"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-pencil-pink border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
-                >
-                  Codeforces
-                </motion.a>
-                <motion.a 
-                  whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                  whileTap={{ scale: 0.98 }}
-                  href="https://atcoder.jp/users/shajjadulferdous"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-notebook-yellow border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
-                >
-                  AtCoder
-                </motion.a>
-                <motion.a 
-                  whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                  whileTap={{ scale: 0.98 }}
-                  href="https://leetcode.com/u/shajjadulferdous/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-sky-haze border-2 border-deep-ink px-6 py-2.5 rounded-lg font-bold text-deep-ink text-sm tracking-wide uppercase transition-all shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] inline-block"
-                >
-                  LeetCode
-                </motion.a>
+                </motion.a>       
               </div>
             </div>
           </motion.div>
