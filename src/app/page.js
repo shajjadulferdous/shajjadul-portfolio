@@ -138,7 +138,18 @@ const staggerContainer = {
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const SparkleStar = ({ className }) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={`w-8 h-8 ${className} select-none pointer-events-none`}>
+      <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z" />
+    </svg>
+  );
 
+  const CodeBracket = ({ className }) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={`w-7 h-7 ${className} select-none pointer-events-none`}>
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
+  );
   // Initialize Lenis smooth scroll
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -284,97 +295,130 @@ export default function Home() {
       <main className="mt-28 space-y-20 pb-20 overflow-x-hidden">
         
         {/* Hero Section */}
-        <section className="px-margin-mobile max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-12 pt-10 relative">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="flex-1 space-y-6 order-2 md:order-1"
-          >
-            <motion.div variants={fadeInUp} className="flex items-center gap-2">
-              <div className="w-8 h-[2px] bg-pencil-pink"></div>
-              <span className="font-hand-label text-xl text-ink-soft">say hello to</span>
-            </motion.div>
-            
-            <motion.h1 
-              variants={fadeInUp}
-              className="font-display-hero-mobile text-6xl md:text-display-hero text-deep-ink font-bold wavy-underline inline-block pb-3 select-none"
-            >
-              Md Shajjadul ferdous
-            </motion.h1>
-            
-            <motion.p variants={fadeInUp} className="font-body-lg text-body-lg max-w-md text-on-surface leading-relaxed">
-              A <span className="bg-secondary-container px-3 py-1 border-2 border-deep-ink rounded-full inline-block rotate-[-1deg] font-bold text-on-secondary-container shadow-[2px_2px_0px_0px_rgba(15,30,28,1)]">CSE Student</span> passionate about problem solving, algorithms, and web applications.
-            </motion.p>
-            
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-4">
-              <motion.a
-                whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15,30,28,1)" }}
-                whileTap={{ scale: 0.98 }}
-                href="#work"
-                className="bg-notebook-yellow border-2 border-deep-ink px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(15,30,28,1)] font-bold text-deep-ink hover:text-deep-ink text-sm tracking-wide uppercase transition-all"
-              >
-                See selected work →
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3, shadow: "6px 6px 0px 0px rgba(15, 30, 28, 1)" }}
-                whileTap={{ scale: 0.98 }}
-                href="https://drive.google.com/file/d/1r-spdW-i4aiH8q4vtQxjfeA90gnabevi/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white border-2 border-deep-ink px-6 py-3 rounded-lg shadow-[4px_4px_0px_0px_rgba(15, 30, 28, 1)] font-bold text-deep-ink hover:text-deep-ink text-sm tracking-wide uppercase transition-all"
-              >
-                View Resume 📄
-              </motion.a>
-            </motion.div>
-          </motion.div>
+<section className="px-4 md:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-16 pt-20 pb-24 relative overflow-hidden" id="hero">
+      {/* Subtle Blueprint Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f1e1c04_1px,transparent_1px),linear-gradient(to_bottom,#0f1e1c04_1px,transparent_1px)] bg-[size:32px_32px] -z-10" />
 
-          {/* Right Side Portrait */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-            animate={{ opacity: 1, scale: 1, rotate: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 order-1 md:order-2 relative w-full max-w-[450px] md:max-w-none"
-          >
-            <div className="relative p-4 border-2 border-dashed border-deep-ink rounded-3xl bg-white/50 shadow-2xl transition-transform hover:rotate-0 duration-300">
-              <Image 
-                alt="Md Shajjadul ferdous Profile Image" 
-                className="rounded-2xl border-2 border-deep-ink grayscale shadow-inner w-full h-auto object-cover max-h-[380px]" 
-                src="https://res.cloudinary.com/dddpxoz5j/image/upload/v1778191772/SHAJJADUL_FERDOUS_gsqsja.jpg"
-                width={450}
-                height={380}
-                priority
-              />
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-notebook-yellow border-2 border-deep-ink px-4 py-1 rounded-full shadow-[2px_2px_0px_0px_rgba(15,30,28,1)] rotate-[-2deg] select-none">
-                <span className="font-hand-label text-sm whitespace-nowrap font-bold text-deep-ink">● CSE @ SUST</span>
-              </div>
-            </div>
+      {/* Left Content Column */}
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="flex-1 space-y-6 order-2 md:order-1 relative z-10"
+      >
+        {/* UNIQUE: Live Status Radar Badge */}
+        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-white border-2 border-deep-ink px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_#0f1e1c]">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span className="font-hand-label text-xs uppercase font-black tracking-wider text-deep-ink">
+            Available for new opportunities
+          </span>
+        </motion.div>
 
-            {/* Floating Decorative Doodles */}
-            <motion.div 
-              animate={{ rotate: 360, y: [0, -6, 0] }}
-              transition={{ 
-                rotate: { repeat: Infinity, duration: 20, ease: "linear" },
-                y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
-              }}
-              style={{ fontVariationSettings: "'FILL' 1" }}
-              className="absolute -top-6 -right-4 material-symbols-outlined text-notebook-yellow text-4xl select-none"
-            >
-              star
-            </motion.div>
-            <motion.div 
-              animate={{ scale: [1, 1.15, 1], y: [0, 5, 0] }}
-              transition={{ 
-                scale: { repeat: Infinity, duration: 2.5, ease: "easeInOut" },
-                y: { repeat: Infinity, duration: 5, ease: "easeInOut" }
-              }}
-              style={{ fontVariationSettings: "'FILL' 1" }}
-              className="absolute top-1/2 -left-6 material-symbols-outlined text-pencil-pink text-3xl select-none"
-            >
-              code
-            </motion.div>
+        <div className="space-y-3">
+          <motion.div variants={fadeInUp} className="flex items-center gap-3">
+            <span className="font-hand-label text-xl text-ink-soft italic">
+              say hello to
+            </span>
+            <div className="w-12 h-0.5 bg-pencil-pink/70"></div>
           </motion.div>
-        </section>
+          
+          {/* Enhanced Heavy-Weight Neo-Brutalist Heading */}
+          <motion.h1 
+            variants={fadeInUp}
+            className="font-display-hero-mobile text-5xl md:text-6xl lg:text-7xl text-deep-ink font-black tracking-tight relative inline-block pb-2 select-none"
+          >
+            Md Shajjadul Ferdous
+            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-deep-ink rounded-full"></span>
+          </motion.h1>
+        </div>
+        
+        <motion.p variants={fadeInUp} className="font-body-lg text-lg md:text-xl max-w-lg text-on-surface leading-relaxed font-medium">
+          A <span className="bg-secondary-container px-3 py-1 border-2 border-deep-ink rounded-full inline-block rotate-[-1.5deg] font-black text-on-secondary-container shadow-[4px_4px_0px_0px_#0f1e1c] mx-1 transition-transform hover:rotate-[1deg] cursor-default duration-200">CSE Student</span> passionate about problem solving, algorithms, and web applications.
+        </motion.p>
+        
+        {/* Action Buttons with Offset Click Mechanism */}
+        <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
+          <motion.a
+            whileHover={{ y: -3, x: -3, shadow: "7px 7px 0px 0px #0f1e1c" }}
+            whileTap={{ scale: 0.98 }}
+            href="#work"
+            className="bg-notebook-yellow border-2 border-deep-ink px-6 py-3.5 rounded-xl shadow-[4px_4px_0px_0px_#0f1e1c] font-bold text-deep-ink text-sm tracking-wider uppercase text-center transition-all"
+          >
+            See selected work →
+          </motion.a>
+          <motion.a
+            whileHover={{ y: -3, x: -3, shadow: "7px 7px 0px 0px #0f1e1c" }}
+            whileTap={{ scale: 0.98 }}
+            href="https://drive.google.com/file/d/1r-spdW-i4aiH8q4vtQxjfeA90gnabevi/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white border-2 border-deep-ink px-6 py-3.5 rounded-xl shadow-[4px_4px_0px_0px_#0f1e1c] font-bold text-deep-ink text-sm tracking-wider uppercase text-center transition-all"
+          >
+            View Resume 📄
+          </motion.a>
+        </motion.div>
+      </motion.div>
+
+      {/* Right Side Portrait: UNIQUE "Photo-Stack" & Color-Reveal Hover Effect */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.93, rotate: -2 }}
+        animate={{ opacity: 1, scale: 1, rotate: 3 }}
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        className="flex-1 order-1 md:order-2 flex justify-center relative w-full max-w-[420px] md:max-w-none group cursor-pointer"
+      >
+        {/* Behind Stack Layer (Creates depth) */}
+        <div className="absolute inset-0 bg-sky-haze/40 border-2 border-deep-ink rounded-[24px] translate-x-3 translate-y-3 rotate-[-4deg] group-hover:rotate-[-6deg] transition-transform duration-300 -z-10 shadow-[4px_4px_0px_0px_#0f1e1c]" />
+
+        {/* Primary Polaroid Card Container */}
+        <div className="relative p-4 pb-14 border-3 border-deep-ink rounded-[24px] bg-white shadow-[10px_10px_0px_0px_#0f1e1c] transition-all duration-300 group-hover:-translate-y-2 group-hover:-translate-x-2 group-hover:shadow-[16px_16px_0px_0px_#0f1e1c]">
+          
+          <div className="overflow-hidden rounded-xl border-2 border-deep-ink bg-deep-ink">
+            <Image 
+              alt="Md Shajjadul ferdous Profile Image" 
+              /* UNIQUE: Grayscale transitions instantly to crisp color on parent block hover */
+              className="w-full h-auto object-cover max-h-[380px] grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105 contrast-110" 
+              src="https://res.cloudinary.com/dddpxoz5j/image/upload/v1778191772/SHAJJADUL_FERDOUS_gsqsja.jpg"
+              width={400}
+              height={380}
+              priority
+            />
+          </div>
+          
+          {/* Label Tag locked elegantly inside the border margin bounds */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-notebook-yellow border-2 border-deep-ink px-5 py-1.5 rounded-full shadow-[3px_3px_0px_0px_#0f1e1c] rotate-[-1.5deg] select-none group-hover:rotate-[1deg] transition-transform duration-300">
+            <span className="font-hand-label text-sm whitespace-nowrap font-black text-deep-ink tracking-wide">
+              ● CSE @ SUST
+            </span>
+          </div>
+        </div>
+
+        {/* Floating Asymmetric SVG Doodles with Independent Trajectories */}
+        <motion.div 
+          animate={{ rotate: [0, 360], y: [0, -10, 0] }}
+          transition={{ 
+            rotate: { repeat: Infinity, duration: 15, ease: "linear" },
+            y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+          }}
+          className="absolute -top-6 right-4 md:-right-2 text-notebook-yellow drop-shadow-[2px_2px_0px_#0f1e1c]"
+        >
+          <SparkleStar />
+        </motion.div>
+        
+        <motion.div 
+          animate={{ scale: [1, 1.1, 1], x: [0, 6, 0] }}
+          transition={{ 
+            scale: { repeat: Infinity, duration: 3, ease: "easeInOut" },
+            x: { repeat: Infinity, duration: 4.5, ease: "easeInOut" }
+          }}
+          className="absolute bottom-10 -left-6 text-pencil-pink drop-shadow-[2px_2px_0px_#0f1e1c]"
+        >
+          <CodeBracket />
+        </motion.div>
+      </motion.div>
+    </section>
 
         {/* About Section */}
         <section className="px-margin-mobile max-w-container-max mx-auto py-12 scroll-mt-24" id="about">
@@ -580,7 +624,7 @@ export default function Home() {
        </section>
 
         {/* Contact Section */}
-<section 
+    <section 
       className="px-4 md:px-8 max-w-7xl mx-auto py-20 text-center scroll-mt-24 relative overflow-hidden" 
       id="contact"
     >
