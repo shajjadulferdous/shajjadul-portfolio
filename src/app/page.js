@@ -10,7 +10,8 @@ import {
   FiShoppingBag, 
   FiMonitor, 
   FiCpu, 
-  FiBarChart2 
+  FiBarChart2 ,
+  FiMenu, FiX
 } from "react-icons/fi";
 // Dynamic portfolio data for easy configuration
 const ABOUT_HIGHLIGHTS = [
@@ -176,94 +177,101 @@ export default function Home() {
   return (
     <div className="bg-background text-on-background font-body-md selection:bg-primary-container min-h-screen">
       {/* Top Navigation */}
-      <header className="fixed top-0 w-full z-50 bg-paper-base/90 backdrop-blur-md px-margin-mobile py-4 border-b-2 border-deep-ink shadow-[4px_4px_0px_0px_rgba(15,30,28,1)]">
-        <nav className="flex justify-between items-center max-w-container-max mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <span className="font-display-hero text-3xl leading-none text-deep-ink font-bold">Shajjadul</span>
-            <span className="font-hand-label text-sm text-ink-soft">cse student @ sust</span>
-          </motion.div>
+  <header className="fixed top-0 w-full z-50 bg-paper-base/90 backdrop-blur-md px-margin-mobile py-4 border-b-2 border-deep-ink shadow-[4px_4px_0px_0px_rgba(15,30,28,1)]">
+      <nav className="flex justify-between items-center max-w-container-max mx-auto">
+        
+        {/* Brand / Logo */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <span className="font-display-hero text-3xl leading-none text-deep-ink font-bold">Shajjadul</span>
+          <span className="font-hand-label text-sm text-ink-soft">cse student @ sust</span>
+        </motion.div>
 
-          {/* Desktop Navigation */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden md:flex gap-6 items-center"
+        {/* Desktop Navigation */}
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="hidden md:flex gap-6 items-center"
+        >
+          <a className="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="#about">About</a>
+          <a className="text-primary font-bold underline decoration-wavy decoration-pencil-pink underline-offset-4" href="#work">Work</a>
+          <a className="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="#toolkit">Toolkit</a>
+          
+          <motion.a 
+            whileHover={{ y: -2, rotate: 1 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center bg-secondary-container px-5 py-2 rounded-full border-2 border-deep-ink text-on-secondary-container font-bold hover:shadow-[2px_2px_0px_0px_rgba(15,30,28,1)] transition-all" 
+            href="#contact"
           >
-            <a className="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="#about">About</a>
-            <a className="text-primary font-bold underline decoration-wavy decoration-pencil-pink underline-offset-4" href="#work">Work</a>
-            <a className="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="#toolkit">Toolkit</a>
-            <motion.a 
-              whileHover={{ y: -2, rotate: 1 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-secondary-container px-5 py-2 rounded-full border-2 border-deep-ink text-on-secondary-container font-bold hover:shadow-[2px_2px_0px_0px_rgba(15,30,28,1)] transition-all" 
+            <span className="relative flex h-2 w-2 mr-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Available
+          </motion.a>
+        </motion.div>
+
+        {/* Mobile Menu Icon Toggle */}
+        <div className="md:hidden flex items-center">
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-deep-ink focus:outline-none flex items-center justify-center p-1 transition-transform duration-200"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? (
+              <FiX className="text-3xl" />
+            ) : (
+              <FiMenu className="text-3xl" />
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Dropdown Navigation */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-paper-base border-t border-deep-ink/10 mt-3 pt-3 flex flex-col gap-4 overflow-hidden"
+          >
+            <a 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-on-surface-variant font-semibold hover:text-primary py-2 px-1 hover:bg-secondary-container/10 rounded transition-colors" 
+              href="#about"
+            >
+              About
+            </a>
+            <a 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-primary font-bold py-2 px-1 hover:bg-secondary-container/10 rounded transition-colors" 
+              href="#work"
+            >
+              Work
+            </a>
+            <a 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-on-surface-variant font-semibold hover:text-primary py-2 px-1 hover:bg-secondary-container/10 rounded transition-colors" 
+              href="#toolkit"
+            >
+              Toolkit
+            </a>
+            <a 
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center bg-secondary-container py-2 px-4 rounded-full border-2 border-deep-ink text-on-secondary-container font-bold hover:bg-secondary-container/80 transition-all mb-2" 
               href="#contact"
             >
-              <span className="relative flex h-2 w-2 inline-block mr-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span className="relative flex h-2 w-2 mr-2 rounded-full bg-emerald-500 animate-pulse"></span>
               Available
-            </motion.a>
+            </a>
           </motion.div>
-
-          {/* Mobile Menu Icon */}
-          <div className="md:hidden">
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-deep-ink focus:outline-none flex items-center justify-center p-1"
-            >
-              <span className="material-symbols-outlined text-4xl">
-                {mobileMenuOpen ? "close" : "menu"}
-              </span>
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Dropdown Navigation */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-paper-base border-t border-deep-ink/10 mt-3 pt-3 flex flex-col gap-4 overflow-hidden"
-            >
-              <a 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-on-surface-variant font-semibold hover:text-primary py-2 px-1 hover:bg-secondary-container/10 rounded transition-colors" 
-                href="#about"
-              >
-                About
-              </a>
-              <a 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary font-bold py-2 px-1 hover:bg-secondary-container/10 rounded transition-colors" 
-                href="#work"
-              >
-                Work
-              </a>
-              <a 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-on-surface-variant font-semibold hover:text-primary py-2 px-1 hover:bg-secondary-container/10 rounded transition-colors" 
-                href="#toolkit"
-              >
-                Toolkit
-              </a>
-              <a 
-                onClick={() => setMobileMenuOpen(false)}
-                className="bg-secondary-container text-center py-2 px-4 rounded-full border-2 border-deep-ink text-on-secondary-container font-bold hover:bg-secondary-container/80 transition-all mb-2" 
-                href="#contact"
-              >
-                Available
-              </a>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+        )}
+      </AnimatePresence>
+    </header>
 
       <main className="mt-28 space-y-20 pb-20 overflow-x-hidden">
         
